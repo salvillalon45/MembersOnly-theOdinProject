@@ -1,0 +1,119 @@
+// -----------------------------------------------
+//
+// Styling for the entire app
+//
+// -----------------------------------------------
+
+// Fonts
+// -----------------------------------------------
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&family=PT+Sans:wght@400;700&display=swap');
+
+// Color Variables
+// -----------------------------------------------
+:root {
+	--blue: #181a2b;
+	--white: #ffffff;
+	--orange: #cd8113;
+	--orangeHover: #e48c0c;
+	--exo2: 'Exo 2', sans-serif;
+	--ptsans: 'PT Sans', sans-serif;
+}
+
+// Layout for entire website
+// -----------------------------------------------
+html,
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	height: 100%;
+	font-family: var(--ptsans);
+	background-color: var(--blue);
+	color: white;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+// Text
+// -----------------------------------------------
+.exo2 {
+	font-family: var(--exo2);
+}
+
+.ptSans {
+	font-family: var(--ptsans);
+}
+
+.title {
+	font-family: var(--exo2);
+	font-weight: 700;
+}
+
+// Layout for cards
+// -----------------------------------------------
+.gridDisplay {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 16px;
+}
+
+.textIntroContainer {
+	display: flex;
+
+	h1 {
+		margin-right: 50px;
+	}
+
+	a {
+		margin-top: 5px;
+	}
+}
+
+.cardItem {
+	color: black;
+}
+
+.errorsContainer {
+	color: red;
+}
+
+// Buttons
+// -----------------------------------------------
+.navigationButton {
+	color: #fff;
+	background-color: var(--orange);
+	border-color: var(--orange);
+}
+
+.navigationButton:hover {
+	color: #fff;
+	background-color: var(--orangeHover);
+	border-color: var(--orangeHover);
+}
+
+.navigationButton:focus {
+	box-shadow: 0 0 0 0.25rem var(--orange);
+	background-color: var(--orangeHover);
+	border-color: var(--orangeHover);
+}
+
+// Page Styling
+// --------------------------------------------
+// @import './layout/header.scss';
+// @import './layout/footer.scss';
+// @import './pages/index.scss';
+
+// // Category
+// @import './pages/category/categoryList.scss';
+// @import './pages/category/categoryDetail.scss';
+// @import './pages/category/categoryDelete.scss';
+
+// // Item
+// @import './pages/item/itemDetail.scss';
