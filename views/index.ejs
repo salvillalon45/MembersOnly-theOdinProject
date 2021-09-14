@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<%- include('./layout/header') -%>
+
+<div class="container" id="landingContainer">
+	<div class="row">
+		<div class="col">
+			<div class="landingTextContainer">
+				<h1>This is the index page</h1>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%- include('./layout/footer') -%>
