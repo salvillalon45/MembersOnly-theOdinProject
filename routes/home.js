@@ -19,6 +19,11 @@ router.get('/sign-up', auth_controller.sign_up_get);
 
 router.post('/sign-up', auth_controller.sign_up_post);
 
+router.get('/log-in', auth_controller.log_in_get);
+router.post('/log-in', auth_controller.log_in_post);
+
+router.get('/log-out', auth_controller.log_out_get);
+
 // POST request for creating Item.
 // router.post('/item/create', item_controller.item_create_post);
 

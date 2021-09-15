@@ -1,3 +1,3 @@
 exports.index = function (req, res) {
-	res.render('index', { title: "Sal's Video Game Store" });
+	res.render('index', { user: req.user });
 };
