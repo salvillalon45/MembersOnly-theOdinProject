@@ -19,7 +19,7 @@ exports.sign_up_post = async function (req, res, next) {
 		let result = await user.save();
 		console.log('What is save user');
 		console.log(result);
-		res.redirect('/');
+		res.redirect('/home');
 	} catch (err) {
 		return next(err);
 	}
@@ -31,14 +31,10 @@ exports.log_in_get = function (req, res, next) {
 };
 
 // POST Log In
-exports.log_in_post = function (req, res, next) {
-	console.log('INSIDE LOG IN POST');
-	passport.authenticate('local', {
-		successRedirect: '/home',
-		failureRedirect: '/home'
-	});
-	console.log('AFTER');
-};
+exports.log_in_post = passport.authenticate('local', {
+	successRedirect: '/home',
+	failureRedirect: '/log-in'
+});
 
 // GET Log Out
 exports.log_out_get = function (req, res, next) {

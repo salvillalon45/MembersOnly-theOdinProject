@@ -6,6 +6,7 @@ const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const session = require('express-session');
 const passport = require('passport');
+const bcrypt = require('bcryptjs');
 const LocalStrategy = require('passport-local').Strategy;
 const localStrategySetup = require('./util/authSetup');
 const serializeUserSetUp = require('./util/authSetup');
@@ -42,6 +43,7 @@ passport.use(
 			console.log(foundUser);
 
 			if (!foundUser) {
+				console.log('User is not found! ');
 				return done(null, false, { message: 'Incorrect username' });
 			}
 
@@ -51,19 +53,18 @@ passport.use(
 				async function (err, res) {
 					if (res) {
 						// passwords match. Log user in
+						console.log('password do match!');
 						return done(null, foundUser);
 					} else {
 						// password do not match!
+						console.log('password do not match!');
 						return done(null, false, {
 							message: 'Incorrect password'
 						});
 					}
 				}
 			);
-			// if (user.password !== password) {
-			// 	return done(null, false, { message: 'Incorrect password' });
-			// }
-
+			console.log('DONE FUNCT');
 			return done(null, foundUser);
 		} catch (err) {
 			console.log('There is an error, return done');
@@ -81,25 +82,6 @@ passport.deserializeUser(function (id, done) {
 		done(err, user);
 	});
 });
-// passport.use(new LocalStrategy(localStrategySetup(username, password, done)));
-// passport.use(
-// 	new LocalStrategy((username, password, done) => {
-// 	  User.findOne({ username: username }, (err, user) => {
-// 		if (err) {
-// 		  return done(err);
-// 		}
-// 		if (!user) {
-// 		  return done(null, false, { message: "Incorrect username" });
-// 		}
-// 		if (user.password !== password) {
-// 		  return done(null, false, { message: "Incorrect password" });
-// 		}
-// 		return done(null, user);
-// 	  });
-// 	})
-//   );
-// passport.serializeUser(serializeUserSetUp(user, done));
-// passport.deserializeUser(deserializeUserSetUp(id, done));
 
 app.use(
 	session({
@@ -133,8 +115,7 @@ app.use(
 );
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/home', homeRouter);
+app.use('/', homeRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -11,15 +11,16 @@ const landing_controller = require('../controllers/landingController');
 // GET home page
 router.get('/', landing_controller.index);
 
+router.get('/home', landing_controller.home);
+
 // AUTH ROUTES
 // -------------------------------------------
-// GET request for creating an item.
-// NOTE This must come before routes that display Item(uses id).
 router.get('/sign-up', auth_controller.sign_up_get);
 
 router.post('/sign-up', auth_controller.sign_up_post);
 
 router.get('/log-in', auth_controller.log_in_get);
+
 router.post('/log-in', auth_controller.log_in_post);
 
 router.get('/log-out', auth_controller.log_out_get);
