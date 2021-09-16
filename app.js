@@ -15,8 +15,7 @@ const storeCurrentUser = require('./util/authSetup');
 require('dotenv').config();
 const User = require('./models/user');
 
-const indexRouter = require('./routes/index');
-const homeRouter = require('./routes/home');
+const indexRouter = require('./routes/routes');
 
 const app = express();
 
@@ -32,7 +31,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 passport.use(
-	new LocalStrategy(async function (username, password, done) {
+	new LocalStrategy({ passReqToCallback: true }, async function (
+		username,
+		password,
+		done
+	) {
 		try {
 			console.log('Going to be inside LocalStrategy');
 			let foundUser = await User.findOne({
@@ -115,7 +118,7 @@ app.use(
 );
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', homeRouter);
+app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

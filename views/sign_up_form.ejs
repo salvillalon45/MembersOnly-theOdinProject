@@ -5,20 +5,54 @@
 		<div class="col">
 			<h1>SIGN UP FORM</h1>
 			<form action="" method="POST">
-				<label for="username">Username</label>
-				<input name="username" placeholder="username" type="text" />
+				<div>
+					<label for="username">Username</label>
+					<input name="username" placeholder="username" type="text" />
+				</div>
 
-				<label for="first_name">First Name</label>
-				<input name="first_name" placeholder="first name" type="text" />
+				<div>
+					<label for="first_name">First Name</label>
+					<input
+						name="first_name"
+						placeholder="first name"
+						type="text"
+					/>
+				</div>
 
-				<label for="last_name">Last Name</label>
-				<input name="last_name" placeholder="last_name" type="text" />
+				<div>
+					<label for="last_name">Last Name</label>
+					<input
+						name="last_name"
+						placeholder="last_name"
+						type="text"
+					/>
+				</div>
 
-				<label for="password">Password</label>
-				<input name="password" type="password" />
+				<div>
+					<label for="password">Password</label>
+					<input name="password" type="password" />
+				</div>
+
+				<div>
+					<label for="confirmPassword">Confirm Password</label>
+					<input name="confirmPassword" type="password" />
+				</div>
 
 				<button>Sign Up</button>
 			</form>
+
+			<%if (errors) { %>
+			<div class="errorsContainer">
+				<p>You got errors on the following:</p>
+				<ul>
+					<% errors.forEach(error => {%>
+
+					<li><%= error.msg %></li>
+
+					<% }) %>
+				</ul>
+			</div>
+			<% }%>
 		</div>
 	</div>
 </div>
