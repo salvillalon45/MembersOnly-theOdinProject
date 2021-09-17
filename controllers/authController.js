@@ -95,15 +95,23 @@ exports.sign_up_post = [
 
 // GET Log In
 exports.log_in_get = function (req, res, next) {
-	res.render('log_in_form');
+	console.log(req);
+	res.render('log_in_form', { message: null });
 };
 
 // POST Log In
-exports.log_in_post = passport.authenticate('local', {
-	successRedirect: '/home',
-	failureRedirect: '/log-in',
-	failureFlash: true
-});
+exports.log_in_post = passport.authenticate(
+	'local',
+	{
+		successRedirect: '/home',
+		failureRedirect: '/log-in'
+		// failureFlash: true
+	}
+	// (err, user, options) => {
+	// 	console.log('What are option');
+	// 	console.log(options); // options will be the complete object you pass in done()
+	// }
+);
 
 // GET Log Out
 exports.log_out_get = function (req, res, next) {
