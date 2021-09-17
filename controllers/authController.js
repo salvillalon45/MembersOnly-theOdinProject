@@ -77,7 +77,7 @@ exports.sign_up_post = [
 						let result = await user.save();
 						console.log('What is save user');
 						console.log(result);
-						res.redirect('/home');
+						res.redirect('/log-in');
 					} catch (err) {
 						console.log(
 							'SIGN UP: Error while trying to save new user in db'
@@ -100,12 +100,13 @@ exports.log_in_get = function (req, res, next) {
 	const flashResult = req.flash();
 	console.log('what is flashresukt');
 	console.log(Object.keys(flashResult));
+
 	if (Object.keys(flashResult).length !== 0) {
 		console.log('There is content');
 		console.log(flashResult.error[0]);
 		message = flashResult.error[0];
-		// message = flashResult;
 	}
+
 	res.render('log_in_form', { message: message });
 };
 

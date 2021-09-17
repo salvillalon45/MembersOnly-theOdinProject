@@ -41,11 +41,13 @@
 									>Home</a
 								>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link menuLink" href="/home/category"
-									>Categories</a
-								>
-							</li>
+							<% if (currentUser) {%>
+								<li class="nav-item">
+									<a class="nav-link menuLink" href="/home/member-sign-in">
+										Become a Member
+									</a>
+								</li>
+							<%}%>
 						</ul>
 					</div>
 				</div>
