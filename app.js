@@ -30,7 +30,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-// app.use(flash());
+app.use(flash());
 passport.use(
 	new LocalStrategy(
 		// { passReqToCallback: true },
@@ -67,7 +67,7 @@ passport.use(
 					}
 				);
 				console.log('DONE FUNCT');
-				return done(null, foundUser);
+				// return done(null, foundUser);
 			} catch (err) {
 				console.log('There is an error, return done');
 				return done(err);

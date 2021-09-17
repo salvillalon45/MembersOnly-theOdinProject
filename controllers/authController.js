@@ -95,8 +95,18 @@ exports.sign_up_post = [
 
 // GET Log In
 exports.log_in_get = function (req, res, next) {
-	console.log(req);
-	res.render('log_in_form', { message: null });
+	console.log('INside logINGEt');
+	let message = null;
+	const flashResult = req.flash();
+	console.log('what is flashresukt');
+	console.log(Object.keys(flashResult));
+	if (Object.keys(flashResult).length !== 0) {
+		console.log('There is content');
+		console.log(flashResult.error[0]);
+		message = flashResult.error[0];
+		// message = flashResult;
+	}
+	res.render('log_in_form', { message: message });
 };
 
 // POST Log In
@@ -104,8 +114,8 @@ exports.log_in_post = passport.authenticate(
 	'local',
 	{
 		successRedirect: '/home',
-		failureRedirect: '/log-in'
-		// failureFlash: true
+		failureRedirect: '/log-in',
+		failureFlash: true
 	}
 	// (err, user, options) => {
 	// 	console.log('What are option');
