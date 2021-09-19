@@ -1,51 +1,32 @@
-const User = require('../models/user');
+const Message = require('../models/message');
 const { body, validationResult } = require('express-validator');
-require('dotenv').config();
 
-// GET Member Sign IN
-exports.member_sign_in_get = function (req, res, next) {
-	console.log(';What is currentUser');
-	console.log(res.locals.currentUser);
-
-	if (!res.locals.currentUser) {
-		res.redirect('/log-in');
-	}
-
-	res.render('member_sign_in_form', { errors: null });
+exports.create_message_get = function (req, res, next) {
+	res.render('create_message_form', { errors: null });
 };
 
-// POST Member Sign IN
-exports.member_sign_in_post = [
-	body('secret_code')
+exports.create_message_post = [
+	body('user_message')
 		.trim()
-		.toLowerCase()
 		.isLength({ min: 1 })
 		.escape()
-		.withMessage('Secret code must not be empty'),
+		.withMessage('Message must not be empty'),
 	async function (req, res, next) {
 		const { currentUser } = res.locals;
 		const errors = validationResult(req);
 
 		if (!errors.isEmpty()) {
-			console.log('SECRET MEMBER SIGN UP: Error with fields');
+			console.log('CREATE MESSAGE: Error with fields');
 			console.log(errors);
-			return res.render('member_sign_in_form', {
+			return res.render('create_message_form', {
 				errors: errors.array(),
-				user: res.locals.currentUser
-			});
-		} else if (req.body.secret_code !== process.env.secret_code) {
-			console.log('SECRET MEMBER SIGN UP: Not Correct Secret Code');
-			console.log(errors);
-			return res.render('member_sign_in_form', {
-				errors: [{ msg: 'Wrong Secret Code' }],
 				user: res.locals.currentUser
 			});
 		}
 
 		try {
-			const isUserInDB = await User.findById(currentUser._id);
+			const isUserInDB = await Message.findById(currentUser._id);
 			console.log(isUserInDB);
-
 			if (isUserInDB.membership_status) {
 				console.log('SECRET MEMBER SIGN UP: User is already a member');
 				return res.render('member_sign_in_form', {

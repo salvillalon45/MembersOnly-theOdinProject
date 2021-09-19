@@ -3,6 +3,7 @@ const router = express.Router();
 const auth_controller = require('../controllers/authController');
 const index_controller = require('../controllers/indexController');
 const user_controller = require('../controllers/userController');
+const message_controller = require('../controllers/messageController');
 
 // HOMEPAGE
 // ------------------------------------------------------------
@@ -24,5 +25,9 @@ router.get('/log-out', auth_controller.log_out_get);
 // ------------------------------------------------------------
 router.get('/home/member-sign-in', user_controller.member_sign_in_get);
 router.post('/home/member-sign-in', user_controller.member_sign_in_post);
+
+// MESSAGE
+// ------------------------------------------------------------
+router.get('/home/create-message', message_controller.create_message_get);
 
 module.exports = router;

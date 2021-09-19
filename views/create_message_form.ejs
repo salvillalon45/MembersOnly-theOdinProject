@@ -1,0 +1,39 @@
+<%- include('./layout/header') -%>
+
+<div class="container" id="landingContainer">
+	<div class="row">
+		<div class="col">
+			<h1>Creat Message</h1>
+			<form action="/create-message" method="POST">
+				<label for="message_title">Message Title</label>
+				<input name="message_title" type="text" />
+
+				<label for="user_message">Your Message</label>
+				<textarea
+					id="user_message"
+					name="user_message"
+					rows="4"
+					cols="50"
+					placeholder="EREN YAEGER"
+				>
+				</textarea>
+				<button>Log In</button>
+			</form>
+
+			<%if (errors) { %>
+			<div class="errorsContainer">
+				<p>You got errors on the following:</p>
+				<ul>
+					<% errors.forEach(error => {%>
+
+					<li><%= error.msg %></li>
+
+					<% }) %>
+				</ul>
+			</div>
+			<% }%>
+		</div>
+	</div>
+</div>
+
+<%- include('./layout/footer') -%>
