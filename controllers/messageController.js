@@ -1,16 +1,39 @@
 const Message = require('../models/message');
 const { body, validationResult } = require('express-validator');
 
+exports.messages_get = async function (req, res, next) {
+	console.log('INside messages_get');
+	try {
+		const { currentUser } = res.locals;
+
+		let messages = await Message.find({ id: currentUser._id });
+		console.log('what are messages');
+		console.log(messages);
+		// res.render('home', { messages: messages });
+		return messages;
+	} catch (err) {
+		console.log('MESSAGES GET: Error retrieving messages');
+		console.log(err);
+
+		return null;
+	}
+};
+
 exports.create_message_get = function (req, res, next) {
 	res.render('create_message_form', { errors: null });
 };
 
 exports.create_message_post = [
-	body('user_message')
+	body('message_title')
 		.trim()
 		.isLength({ min: 1 })
 		.escape()
-		.withMessage('Message must not be empty'),
+		.withMessage('Message title must not be empty'),
+	body('message_content')
+		.trim()
+		.isLength({ min: 1 })
+		.escape()
+		.withMessage('Message content must not be empty'),
 	async function (req, res, next) {
 		const { currentUser } = res.locals;
 		const errors = validationResult(req);
@@ -25,36 +48,19 @@ exports.create_message_post = [
 		}
 
 		try {
-			const isUserInDB = await Message.findById(currentUser._id);
-			console.log(isUserInDB);
-			if (isUserInDB.membership_status) {
-				console.log('SECRET MEMBER SIGN UP: User is already a member');
-				return res.render('member_sign_in_form', {
-					errors: [{ msg: 'User is already a member' }],
-					user: res.locals.currentUser
-				});
-			}
-			console.log('GOig to update membership_status');
-			const userToUpdate = new User(currentUser);
-			userToUpdate.membership_status = true;
+			const newMessage = new Message({
+				title: req.body.message_title,
+				timestamp: new Date(),
+				message_content: req.body.message_content,
+				user_id: currentUser._id
+			});
 
-			// If username does not exist, continue to update
-			User.findByIdAndUpdate(
-				currentUser._id,
-				userToUpdate,
-				{},
-				function (err) {
-					if (err) {
-						return next(err);
-					}
-
-					res.redirect('/home');
-				}
-			);
+			let result = await newMessage.save();
+			console.log('What is save message');
+			console.log(result);
+			res.redirect('/home');
 		} catch (err) {
-			console.log(
-				'SECRET MEMBER SIGN UP: Error while trying to find user in db'
-			);
+			console.log('CREATE MESSAGE: Error while trying to save in db');
 			return next(err);
 		}
 	}

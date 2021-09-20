@@ -28,6 +28,8 @@ router.post('/home/member-sign-in', user_controller.member_sign_in_post);
 
 // MESSAGE
 // ------------------------------------------------------------
+router.get('/home', message_controller.messages_get);
 router.get('/home/create-message', message_controller.create_message_get);
+router.post('/home/create-message', message_controller.create_message_post);
 
 module.exports = router;
