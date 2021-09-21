@@ -6,17 +6,17 @@
 
 // Fonts
 // -----------------------------------------------
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&family=PT+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Roboto&display=swap');
 
 // Color Variables
 // -----------------------------------------------
 :root {
-	--blue: #181a2b;
+	--black: #1e1c1c;
 	--white: #ffffff;
-	--orange: #cd8113;
-	--orangeHover: #e48c0c;
-	--exo2: 'Exo 2', sans-serif;
-	--ptsans: 'PT Sans', sans-serif;
+	--brown: #d2c4ae;
+	--lightBrown: #ffeccf;
+	--roboto: 'Roboto', sans-serif;
+	--playfair: 'Playfair Display', serif;
 }
 
 // Layout for entire website
@@ -27,8 +27,8 @@ body {
 	padding: 0;
 	box-sizing: border-box;
 	height: 100%;
-	font-family: var(--ptsans);
-	background-color: var(--blue);
+	font-family: var(--roboto);
+	background-color: var(--black);
 	color: white;
 }
 
@@ -43,16 +43,16 @@ main {
 
 // Text
 // -----------------------------------------------
-.exo2 {
-	font-family: var(--exo2);
+.playfair {
+	font-family: var(--playfair);
 }
 
-.ptSans {
-	font-family: var(--ptsans);
+.roboto {
+	font-family: var(--roboto);
 }
 
 .title {
-	font-family: var(--exo2);
+	font-family: var(--playfair);
 	font-weight: 700;
 }
 
@@ -106,9 +106,9 @@ main {
 
 // Page Styling
 // --------------------------------------------
-// @import './layout/header.scss';
-// @import './layout/footer.scss';
-// @import './pages/index.scss';
+@import './layout/header.scss';
+@import './layout/footer.scss';
+@import './index.scss';
 
 // // Category
 // @import './pages/category/categoryList.scss';

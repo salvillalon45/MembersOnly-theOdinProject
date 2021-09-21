@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&family=PT+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Roboto&display=swap");
 :root {
-  --blue: #181a2b;
+  --black: #1e1c1c;
   --white: #ffffff;
-  --orange: #cd8113;
-  --orangeHover: #e48c0c;
-  --exo2: 'Exo 2', sans-serif;
-  --ptsans: 'PT Sans', sans-serif; }
+  --brown: #d2c4ae;
+  --lightBrown: #ffeccf;
+  --roboto: 'Roboto', sans-serif;
+  --playfair: 'Playfair Display', serif; }
 
 html,
 body {
@@ -13,8 +13,8 @@ body {
   padding: 0;
   box-sizing: border-box;
   height: 100%;
-  font-family: var(--ptsans);
-  background-color: var(--blue);
+  font-family: var(--roboto);
+  background-color: var(--black);
   color: white; }
 
 body {
@@ -24,14 +24,14 @@ body {
 main {
   flex: 1 0 auto; }
 
-.exo2 {
-  font-family: var(--exo2); }
+.playfair {
+  font-family: var(--playfair); }
 
-.ptSans {
-  font-family: var(--ptsans); }
+.roboto {
+  font-family: var(--roboto); }
 
 .title {
-  font-family: var(--exo2);
+  font-family: var(--playfair);
   font-weight: 700; }
 
 .gridDisplay {
@@ -66,5 +66,42 @@ main {
   box-shadow: 0 0 0 0.25rem var(--orange);
   background-color: var(--orangeHover);
   border-color: var(--orangeHover); }
+
+#headerContainer #logo {
+  color: white;
+  font-family: var(--playfair);
+  font-size: 1.5rem; }
+
+#headerContainer ul li .menuLink {
+  color: white;
+  font-family: var(--playfair);
+  font-size: 1.3rem; }
+
+#footerContainer {
+  display: flex;
+  justify-content: flex-end;
+  color: white; }
+  #footerContainer .footerContentContainer {
+    display: flex; }
+    #footerContainer .footerContentContainer a {
+      color: white; }
+    #footerContainer .footerContentContainer p {
+      margin-left: 15px;
+      margin-right: 15px;
+      font-size: 18px; }
+
+#landingContainer .landingTextContainer {
+  text-align: center;
+  color: white; }
+  #landingContainer .landingTextContainer h1 {
+    font-size: 3.5rem; }
+
+#landingContainer .messagesContainer {
+  display: flex;
+  flex-direction: column; }
+  #landingContainer .messagesContainer .messageCard {
+    color: var(--black);
+    background-color: var(--lightBrown);
+    margin-bottom: 20px; }
 
 /*# sourceMappingURL=style.css.map */

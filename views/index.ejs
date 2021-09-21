@@ -4,57 +4,49 @@
 	<div class="row">
 		<div class="col">
 			<div class="landingTextContainer">
-				<h1>This is the index page</h1>
+				<h1 class="title">Welcome to the Yeagerists</h1>
+				<h2 class="playfair">Make an account and join the cause</h2>
+			</div>
 
-				<h2>WELCOME TO THE EREN JAEGER CLUB</h2>
+			<%if (messages.length > 0) { %>
+			<div class="messagesContainer">
+				<% messages.forEach(message => {%>
+				<div class="card messageCard">
+					<div class="card-body">
+						<h5 class="card-title title"><%= message.title %></h5>
+						<p class="card-text"><%= message.message_content %></p>
 
-				<p><a href="/log-in">LOG IN</a></p>
-
-				<p><a href="/sign-up">SIGN UP</a></p>
-				<p>
-					<%if (currentUser) { %>
-					<a href="/log-out">LOG OUT</a>
-					<% }%>
-				</p>
-				<%if (messages.length > 0) { %>
-				<div class="messagesContainer">
-					<p>You got messages on the following:</p>
-					<ul>
-						<% messages.forEach(message => {%>
-
-						<li><b>Title: </b> <%= message.title %></li>
-						<li>
-							<b>Message Content: </b><%= message.message_content
-							%>
-						</li>
 						<%if (currentUser && currentUser.membership_status) { %>
-						<li><b>Name: </b><%= message.user_id.name %></li>
-						<li>
-							<b>Username: </b><%= message.user_id.username %>
-						</li>
-						<li>
-							<b>Date posted: </b><%= String(message.timestamp)%>
-						</li>
+						<p class="card-text">
+							<b>Author Name:</b>
+							<%= message.user_id.name %>
+						</p>
+						<p class="card-text">
+							<b>Username:</b>
+							<%= message.user_id.username %>
+						</p>
+						<p class="card-text">
+							<b>Date Posted:</b> <%= String(message.timestamp)%>
+						</p>
 						<%} else {%>
-						<li>Become a member to see full post</li>
-						<%}%> <%if (currentUser && currentUser.admin_status) {
-						%>
+						<p class="card-text">
+							Become a member to see full post
+						</p>
+						<%}%> <%if (currentUser && currentUser.admin_status) {%>
 						<p>
 							<a
+								class="btn btn-danger"
 								href="<%= `/delete-message/${message._id}` %>"
 								role="button"
 								>DELETE</a
 							>
 						</p>
-						<!-- <form action="/delete-message" method="DELETE">
-							<button>Delete</button> -->
-						<!-- </form> -->
-						<%}%> <% }) %>
-						<hr />
-					</ul>
+						<%}%>
+					</div>
 				</div>
-				<% }%>
+				<% }) %>
 			</div>
+			<% }%>
 		</div>
 	</div>
 </div>

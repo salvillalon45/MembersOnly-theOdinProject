@@ -1,0 +1,31 @@
+// -----------------------------------------------
+//
+// Styling for index page
+//
+// -----------------------------------------------
+#landingContainer {
+	// position: fixed;
+	// top: 50%;
+	// left: 50%;
+	// transform: translate(-50%, -50%);
+
+	.landingTextContainer {
+		text-align: center;
+		color: white;
+
+		h1 {
+			font-size: 3.5rem;
+		}
+	}
+
+	.messagesContainer {
+		display: flex;
+		flex-direction: column;
+
+		.messageCard {
+			color: var(--black);
+			background-color: var(--lightBrown);
+			margin-bottom: 20px;
+		}
+	}
+}
