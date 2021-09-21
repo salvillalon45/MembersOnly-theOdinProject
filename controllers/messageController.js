@@ -61,13 +61,9 @@ exports.create_message_post = [
 		}
 
 		try {
-			const event = new Date();
-			const options = { year: 'numeric', month: 'short', day: 'numeric' };
-			const messageDate = event.toLocaleDateString([], options);
-
 			const newMessage = new Message({
 				title: req.body.message_title,
-				timestamp: messageDate,
+				timestamp: new Date(),
 				message_content: req.body.message_content,
 				user_id: currentUser._id
 			});

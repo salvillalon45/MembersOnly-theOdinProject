@@ -26,7 +26,8 @@
 							<%= message.user_id.username %>
 						</p>
 						<p class="card-text">
-							<b>Date Posted:</b> <%= String(message.timestamp)%>
+							<b>Date Posted:</b> <%=
+							cardUtils.formatDate(message.timestamp)%>
 						</p>
 						<%} else {%>
 						<p class="card-text">
