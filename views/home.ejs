@@ -7,6 +7,33 @@
 				<h2>YOU MADE IT TO THE HOME PAGE! NICE!</h2>
 				<a href="/log-out">LOG OUT</a>
 			</div>
+
+			<%if (messages) { %>
+			<div class="messagesContainer">
+				<p>You got messages on the following:</p>
+				<ul>
+					<% messages.forEach(message => {%>
+
+					<li><%= message.title %></li>
+					<li>
+						<%= currentUser !== null ? message.user_id.name :
+						'Become a member to see full post' %>
+					</li>
+					<li>
+						<%= currentUser !== null ? message.user_id.username :
+						'Become a member to see full post' %>
+					</li>
+					<li>
+						<%= currentUser !== null ? String(message.timestamp) :
+						'Become a member to see full post' %>
+					</li>
+					<li><%= message.message_content %></li>
+					<hr />
+
+					<% }) %>
+				</ul>
+			</div>
+			<% }%>
 		</div>
 	</div>
 </div>

@@ -4,7 +4,8 @@
 	<div class="row">
 		<div class="col">
 			<h1>Creat Message</h1>
-			<form action="/home/create-message" method="POST">
+			<% if (currentUser.membership_status) {%>
+			<form action="/create-message" method="POST">
 				<label for="message_title">Message Title</label>
 				<input name="message_title" type="text" />
 
@@ -19,8 +20,9 @@
 				</textarea>
 				<button>Log In</button>
 			</form>
-
-			<%if (errors) { %>
+			<%} else {%>
+			<h2>Become a member to create messages</h2>
+			<%}%> <%if (errors) { %>
 			<div class="errorsContainer">
 				<p>You got errors on the following:</p>
 				<ul>

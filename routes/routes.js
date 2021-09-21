@@ -8,7 +8,7 @@ const message_controller = require('../controllers/messageController');
 // HOMEPAGE
 // ------------------------------------------------------------
 router.get('/', index_controller.index);
-router.get('/home', index_controller.home);
+// router.get('/home', index_controller.home);
 
 // SIGNUP
 // ------------------------------------------------------------
@@ -23,13 +23,16 @@ router.get('/log-out', auth_controller.log_out_get);
 
 // USER
 // ------------------------------------------------------------
-router.get('/home/member-sign-in', user_controller.member_sign_in_get);
-router.post('/home/member-sign-in', user_controller.member_sign_in_post);
+router.get('/member-sign-in', user_controller.member_sign_in_get);
+router.post('/member-sign-in', user_controller.member_sign_in_post);
+router.get('/admin-sign-in', user_controller.admin_sign_in_get);
+router.post('/admin-sign-in', user_controller.admin_sign_in_post);
 
 // MESSAGE
 // ------------------------------------------------------------
-router.get('/home', message_controller.messages_get);
-router.get('/home/create-message', message_controller.create_message_get);
-router.post('/home/create-message', message_controller.create_message_post);
+// router.get('/home', message_controller.messages_get);
+router.get('/create-message', message_controller.create_message_get);
+router.post('/create-message', message_controller.create_message_post);
+router.get('/delete-message/:id', message_controller.message_delete);
 
 module.exports = router;

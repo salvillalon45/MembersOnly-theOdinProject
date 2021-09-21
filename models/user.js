@@ -22,6 +22,10 @@ const UserSchema = new Schema({
 	membership_status: {
 		type: Boolean,
 		required: true
+	},
+	admin_status: {
+		type: Boolean,
+		required: false
 	}
 });
 

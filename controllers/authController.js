@@ -72,7 +72,8 @@ exports.sign_up_post = [
 							password: hashedPassword,
 							membership_status: false,
 							last_name: req.body.last_name,
-							first_name: req.body.first_name
+							first_name: req.body.first_name,
+							admin_status: false
 						});
 						let result = await user.save();
 						console.log('What is save user');
@@ -114,7 +115,7 @@ exports.log_in_get = function (req, res, next) {
 exports.log_in_post = passport.authenticate(
 	'local',
 	{
-		successRedirect: '/home',
+		successRedirect: '/',
 		failureRedirect: '/log-in',
 		failureFlash: true
 	}

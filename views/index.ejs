@@ -11,6 +11,49 @@
 				<p><a href="/log-in">LOG IN</a></p>
 
 				<p><a href="/sign-up">SIGN UP</a></p>
+				<p>
+					<%if (currentUser) { %>
+					<a href="/log-out">LOG OUT</a>
+					<% }%>
+				</p>
+				<%if (messages.length > 0) { %>
+				<div class="messagesContainer">
+					<p>You got messages on the following:</p>
+					<ul>
+						<% messages.forEach(message => {%>
+
+						<li><b>Title: </b> <%= message.title %></li>
+						<li>
+							<b>Message Content: </b><%= message.message_content
+							%>
+						</li>
+						<%if (currentUser && currentUser.membership_status) { %>
+						<li><b>Name: </b><%= message.user_id.name %></li>
+						<li>
+							<b>Username: </b><%= message.user_id.username %>
+						</li>
+						<li>
+							<b>Date posted: </b><%= String(message.timestamp)%>
+						</li>
+						<%} else {%>
+						<li>Become a member to see full post</li>
+						<%}%> <%if (currentUser && currentUser.admin_status) {
+						%>
+						<p>
+							<a
+								href="<%= `/delete-message/${message._id}` %>"
+								role="button"
+								>DELETE</a
+							>
+						</p>
+						<!-- <form action="/delete-message" method="DELETE">
+							<button>Delete</button> -->
+						<!-- </form> -->
+						<%}%> <% }) %>
+						<hr />
+					</ul>
+				</div>
+				<% }%>
 			</div>
 		</div>
 	</div>
