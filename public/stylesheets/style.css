@@ -4,6 +4,7 @@
   --white: #ffffff;
   --brown: #d2c4ae;
   --lightBrown: #ffeccf;
+  --green: #294023;
   --roboto: 'Roboto', sans-serif;
   --playfair: 'Playfair Display', serif; }
 
@@ -52,10 +53,20 @@ main {
 .errorsContainer {
   color: red; }
 
-.navigationButton {
+.secondRow {
+  margin-top: 20px; }
+
+.buttonContainer {
+  margin-top: 20px; }
+
+.button {
   color: #fff;
   background-color: var(--orange);
   border-color: var(--orange); }
+
+.greenButton {
+  background-color: var(--green);
+  border-color: var(--green); }
 
 .navigationButton:hover {
   color: #fff;

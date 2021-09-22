@@ -3,23 +3,48 @@
 <div class="container" id="landingContainer">
 	<div class="row">
 		<div class="col">
-			<h1>LOG IN FORM</h1>
-			<form action="/log-in" method="POST">
-				<label for="username">Username</label>
-				<input name="username" placeholder="username" type="text" />
+			<div class="formContainer">
+				<h1 class="playfair">Log In Fellow Yeagerist</h1>
 
-				<label for="password">Password</label>
-				<input name="password" type="password" />
+				<form action="/log-in" method="POST">
+					<div class="form-row">
+						<div class="col">
+							<div class="form-group">
+								<label for="username">Username</label>
+								<input
+									class="form-control"
+									name="username"
+									type="text"
+								/>
+							</div>
+						</div>
+					</div>
 
-				<button>Log In</button>
-			</form>
+					<div class="form-row secondRow">
+						<div class="col">
+							<div class="form-group">
+								<label for="password">Password</label>
+								<input
+									class="form-control"
+									name="password"
+									type="password"
+								/>
+							</div>
+						</div>
+					</div>
 
-			<%if (message) { %>
-			<div class="errorsContainer">
-				<p>You got errors on the following:</p>
-				<p><%= message %></p>
+					<div class="buttonContainer">
+						<button class="btn btn-success">Log In</button>
+					</div>
+				</form>
+
+				<%if (message) { %>
+				<div class="errorsContainer">
+					<p>You got errors on the following:</p>
+					<p><%= message %></p>
+				</div>
+				<% }%>
 			</div>
-			<% }%>
 		</div>
 	</div>
 </div>

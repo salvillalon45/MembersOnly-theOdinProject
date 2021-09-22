@@ -15,6 +15,7 @@
 	--white: #ffffff;
 	--brown: #d2c4ae;
 	--lightBrown: #ffeccf;
+	--green: #294023;
 	--roboto: 'Roboto', sans-serif;
 	--playfair: 'Playfair Display', serif;
 }
@@ -84,12 +85,26 @@ main {
 	color: red;
 }
 
+// Forms
+.secondRow {
+	margin-top: 20px;
+}
+
 // Buttons
 // -----------------------------------------------
-.navigationButton {
+.buttonContainer {
+	margin-top: 20px;
+}
+
+.button {
 	color: #fff;
 	background-color: var(--orange);
 	border-color: var(--orange);
+}
+
+.greenButton {
+	background-color: var(--green);
+	border-color: var(--green);
 }
 
 .navigationButton:hover {
