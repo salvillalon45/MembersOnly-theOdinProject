@@ -14,11 +14,15 @@ const serializeUserSetUp = require('./util/authSetup');
 const deserializeUserSetUp = require('./util/authSetup');
 const storeCurrentUser = require('./util/authSetup');
 require('dotenv').config();
+const favicon = require('serve-favicon');
 const User = require('./models/user');
 
 const indexRouter = require('./routes/routes');
 
 const app = express();
+
+// Favicon
+app.use(favicon(path.join(__dirname, 'public', 'images', 'eren.jpg')));
 
 // Set up mongoose connection
 const mongoose = require('mongoose');

@@ -2,27 +2,56 @@
 
 <div class="container" id="landingContainer">
 	<div class="row">
-		<div class="col">
-			<h1>BECOME MEMBER FORM</h1>
-			<p>Passcode is: yeagerists</p>
-			<form action="/member-sign-in" method="POST">
-				<label for="secret_code">Enter Secret Code</label>
-				<input name="secret_code" type="text" />
-				<button>Become a Member</button>
-			</form>
+		<div class="col formWrapperContainer">
+			<%if (!currentUser.membership_status) { %>
+			<div class="formContainer">
+				<h1 class="playfair">Become a Yeagerist</h1>
+				<p class="text-center">Passcode is: yeagerists</p>
 
-			<%if (errors) { %>
-			<div class="errorsContainer">
-				<p>You got errors on the following:</p>
-				<ul>
+				<form action="/member-sign-in" method="POST">
+					<div class="form-row extraRow">
+						<div class="col">
+							<div class="form-group">
+								<label class="playfair" for="secret_code"
+									>Enter Secret Code</label
+								>
+								<input
+									class="form-control playfair"
+									name="secret_code"
+									type="text"
+								/>
+							</div>
+						</div>
+					</div>
+
+					<div class="buttonContainer text-center">
+						<button class="btn btn-success appButton">
+							Become a Yeagerist
+						</button>
+					</div>
+				</form>
+				<%if (errors) { %>
+				<div class="errorsContainer text-center extraRow">
+					<p>You got errors on the following:</p>
+
 					<% errors.forEach(error => {%>
 
-					<li><%= error.msg %></li>
+					<p><%= error.msg %></p>
 
 					<% }) %>
-				</ul>
+				</div>
+				<% }%> <% } else {%>
+				<div class="welcomeContainer">
+					<h1 class="playfair text-center extraRow marginBottom">
+						Congrats. You are a member
+					</h1>
+					<img
+						class="img-fluid marginBottom"
+						src="/images/welcome.jpg"
+					/>
+				</div>
+				<%}%>
 			</div>
-			<% }%>
 		</div>
 	</div>
 </div>

@@ -2,57 +2,106 @@
 
 <div class="container" id="landingContainer">
 	<div class="row">
-		<div class="col">
-			<h1>SIGN UP FORM</h1>
-			<form action="" method="POST">
-				<div>
-					<label for="username">Username</label>
-					<input name="username" placeholder="username" type="text" />
+		<div class="col formWrapperContainer">
+			<div class="formContainer">
+				<h1 class="playfair">Sign In New Yeagerist</h1>
+
+				<form action="" method="POST">
+					<div class="form-row">
+						<div class="col">
+							<div class="form-group">
+								<label class="playfair" for="username"
+									>Username</label
+								>
+								<input
+									class="form-control playfair"
+									name="username"
+									type="text"
+								/>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row extraRow">
+						<div class="col">
+							<div class="form-group">
+								<label class="playfair" for="first_name"
+									>First Name</label
+								>
+								<input
+									class="form-control playfair"
+									name="first_name"
+									type="text"
+								/>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row extraRow">
+						<div class="col">
+							<div class="form-group">
+								<label class="playfair" for="last_name"
+									>Last Name</label
+								>
+								<input
+									class="form-control playfair"
+									name="last_name"
+									type="text"
+								/>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row extraRow">
+						<div class="col">
+							<div class="form-group">
+								<label class="playfair" for="password"
+									>Password</label
+								>
+								<input
+									class="form-control playfair"
+									name="password"
+									type="password"
+								/>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-row extraRow">
+						<div class="col">
+							<div class="form-group">
+								<label class="playfair" for="confirmPassword"
+									>Confirm Password</label
+								>
+								<input
+									class="form-control playfair"
+									name="confirmPassword"
+									type="password"
+								/>
+							</div>
+						</div>
+					</div>
+
+					<div class="buttonContainer">
+						<button class="btn btn-success appButton">
+							Sign Up
+						</button>
+					</div>
+				</form>
+
+				<%if (errors) { %>
+				<div class="errorsContainer">
+					<p>You got errors on the following:</p>
+					<ul>
+						<% errors.forEach(error => {%>
+
+						<li><%= error.msg %></li>
+
+						<% }) %>
+					</ul>
 				</div>
-
-				<div>
-					<label for="first_name">First Name</label>
-					<input
-						name="first_name"
-						placeholder="first name"
-						type="text"
-					/>
-				</div>
-
-				<div>
-					<label for="last_name">Last Name</label>
-					<input
-						name="last_name"
-						placeholder="last_name"
-						type="text"
-					/>
-				</div>
-
-				<div>
-					<label for="password">Password</label>
-					<input name="password" type="password" />
-				</div>
-
-				<div>
-					<label for="confirmPassword">Confirm Password</label>
-					<input name="confirmPassword" type="password" />
-				</div>
-
-				<button>Sign Up</button>
-			</form>
-
-			<%if (errors) { %>
-			<div class="errorsContainer">
-				<p>You got errors on the following:</p>
-				<ul>
-					<% errors.forEach(error => {%>
-
-					<li><%= error.msg %></li>
-
-					<% }) %>
-				</ul>
+				<% }%>
 			</div>
-			<% }%>
 		</div>
 	</div>
 </div>

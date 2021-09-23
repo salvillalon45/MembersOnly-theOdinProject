@@ -53,16 +53,27 @@ main {
 .errorsContainer {
   color: red; }
 
-.secondRow {
+form {
   margin-top: 20px; }
+
+.formWrapperContainer {
+  display: flex; }
+
+.formContainer {
+  display: inline-block;
+  margin: 0 auto; }
+
+.extraRow {
+  margin-top: 20px; }
+
+.marginBottom {
+  margin-bottom: 20px; }
 
 .buttonContainer {
   margin-top: 20px; }
 
-.button {
-  color: #fff;
-  background-color: var(--orange);
-  border-color: var(--orange); }
+.appButton {
+  font-family: var(--playfair); }
 
 .greenButton {
   background-color: var(--green);

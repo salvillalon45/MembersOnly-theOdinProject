@@ -2,40 +2,68 @@
 
 <div class="container" id="landingContainer">
 	<div class="row">
-		<div class="col">
-			<h1>Creat Message</h1>
-			<% if (currentUser.membership_status) {%>
-			<form action="/create-message" method="POST">
-				<label for="message_title">Message Title</label>
-				<input name="message_title" type="text" />
+		<div class="col formWrapperContainer">
+			<div class="formContainer">
+				<h1 class="text-center playfair">Create a Message</h1>
 
-				<label for="message_content">Your Message</label>
-				<textarea
-					id="message_content"
-					name="message_content"
-					rows="4"
-					cols="50"
-					placeholder="EREN YAEGER"
-				>
-				</textarea>
-				<button>Log In</button>
-			</form>
-			<%} else {%>
-			<h2>Become a member to create messages</h2>
-			<%}%> <%if (errors) { %>
-			<div class="errorsContainer">
-				<p>You got errors on the following:</p>
-				<ul>
-					<% errors.forEach(error => {%>
+				<% if (currentUser.membership_status) {%>
+				<form action="/create-message" method="POST">
+					<div class="form-row">
+						<div class="col">
+							<div class="form-group">
+								<label class="playfair" for="message_title"
+									>Message Title</label
+								>
+								<input
+									class="form-control playfair"
+									name="message_title"
+									type="text"
+								/>
+							</div>
+						</div>
+					</div>
 
-					<li><%= error.msg %></li>
+					<div class="form-row extraRow">
+						<div class="col">
+							<div class="form-group">
+								<label class="playfair" for="message_content"
+									>Your Message</label
+								>
+								<textarea
+									class="form-control playfair"
+									id="message_content"
+									name="message_content"
+									rows="4"
+									cols="50"
+								>
+								</textarea>
+							</div>
+						</div>
+					</div>
 
-					<% }) %>
-				</ul>
+					<div class="buttonContainer text-center">
+						<button class="btn btn-success appButton">
+							Submit
+						</button>
+					</div>
+				</form>
+				<%} else {%>
+				<h2>Become a member to create messages</h2>
+				<%}%> <%if (errors) { %>
+				<div class="errorsContainer">
+					<p>You got errors on the following:</p>
+					<ul>
+						<% errors.forEach(error => {%>
+
+						<li><%= error.msg %></li>
+
+						<% }) %>
+					</ul>
+				</div>
+				<% }%>
 			</div>
-			<% }%>
 		</div>
 	</div>
-</div>
 
-<%- include('./layout/footer') -%>
+	<%- include('./layout/footer') -%>
+</div>
