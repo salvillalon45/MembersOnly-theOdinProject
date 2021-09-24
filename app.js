@@ -9,10 +9,6 @@ const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const LocalStrategy = require('passport-local').Strategy;
 const flash = require('connect-flash');
-const localStrategySetup = require('./util/authSetup');
-const serializeUserSetUp = require('./util/authSetup');
-const deserializeUserSetUp = require('./util/authSetup');
-const storeCurrentUser = require('./util/authSetup');
 require('dotenv').config();
 const favicon = require('serve-favicon');
 const User = require('./models/user');
@@ -36,48 +32,39 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(flash());
 passport.use(
-	new LocalStrategy(
-		// { passReqToCallback: true },
-		async function (username, password, done) {
-			try {
-				console.log('Going to be inside LocalStrategy');
-				let foundUser = await User.findOne({
-					username: username
-				});
+	new LocalStrategy(async function (username, password, done) {
+		try {
+			const foundUser = await User.findOne({
+				username: username
+			});
 
-				console.log('What is foundUser');
-				console.log(foundUser);
-
-				if (!foundUser) {
-					console.log('User is not found! ');
-					return done(null, false, { message: 'Incorrect username' });
-				}
-
-				bcrypt.compare(
-					password,
-					foundUser.password,
-					async function (err, res) {
-						if (res) {
-							// passwords match. Log user in
-							console.log('password do match!');
-							return done(null, foundUser);
-						} else {
-							// password do not match!
-							console.log('password do not match!');
-							return done(null, false, {
-								message: 'Incorrect password'
-							});
-						}
-					}
-				);
-				console.log('DONE FUNCT');
-				// return done(null, foundUser);
-			} catch (err) {
-				console.log('There is an error, return done');
-				return done(err);
+			if (!foundUser) {
+				console.log('User is not found! ');
+				return done(null, false, { message: 'Incorrect username' });
 			}
+
+			bcrypt.compare(
+				password,
+				foundUser.password,
+				async function (err, res) {
+					if (res) {
+						// passwords match. Log user in
+						console.log('password do match!');
+						return done(null, foundUser);
+					} else {
+						// password do not match!
+						console.log('password do not match!');
+						return done(null, false, {
+							message: 'Incorrect password'
+						});
+					}
+				}
+			);
+		} catch (err) {
+			console.log('There is an error, return done');
+			return done(err);
 		}
-	)
+	})
 );
 
 passport.serializeUser(function (user, done) {

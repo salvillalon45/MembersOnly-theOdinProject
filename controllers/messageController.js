@@ -4,6 +4,10 @@ const { body, validationResult } = require('express-validator');
 exports.messages_get = async function (req, res, next) {
 	try {
 		let messages = await Message.find().populate('user_id');
+		messages = messages.sort((a, b) => {
+			return a.timestamp < b.timestamp ? 1 : -1;
+		});
+
 		return messages;
 	} catch (err) {
 		console.log('MESSAGES GET: Error retrieving messages');

@@ -19,15 +19,15 @@
 }
 
 // Styling for the forms used
-form {
-	margin-top: 20px;
-}
-
 .formWrapperContainer {
 	display: flex;
-}
 
-.formContainer {
-	display: inline-block;
-	margin: 0 auto;
+	.formContainer {
+		display: inline-block;
+		margin: 0 auto;
+
+		form {
+			margin-top: 20px;
+		}
+	}
 }

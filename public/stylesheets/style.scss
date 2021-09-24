@@ -13,9 +13,7 @@
 :root {
 	--black: #1e1c1c;
 	--white: #ffffff;
-	--brown: #d2c4ae;
 	--lightBrown: #ffeccf;
-	--green: #294023;
 	--roboto: 'Roboto', sans-serif;
 	--playfair: 'Playfair Display', serif;
 }
@@ -57,22 +55,14 @@ main {
 	font-weight: 700;
 }
 
-.textIntroContainer {
-	display: flex;
-
-	h1 {
-		margin-right: 50px;
-	}
-
-	a {
-		margin-top: 5px;
-	}
-}
-
+// Error Styling
+// -----------------------------------------------
 .errorsContainer {
 	color: red;
 }
 
+// Margin Classes
+// -----------------------------------------------
 .extraRow {
 	margin-top: 20px;
 }
@@ -84,27 +74,10 @@ main {
 // -----------------------------------------------
 .buttonContainer {
 	margin-top: 20px;
-}
 
-.appButton {
-	font-family: var(--playfair);
-}
-
-.greenButton {
-	background-color: var(--green);
-	border-color: var(--green);
-}
-
-.navigationButton:hover {
-	color: #fff;
-	background-color: var(--orangeHover);
-	border-color: var(--orangeHover);
-}
-
-.navigationButton:focus {
-	box-shadow: 0 0 0 0.25rem var(--orange);
-	background-color: var(--orangeHover);
-	border-color: var(--orangeHover);
+	.appButton {
+		font-family: var(--playfair);
+	}
 }
 
 // Page Styling
@@ -113,10 +86,5 @@ main {
 @import './layout/footer.scss';
 @import './index.scss';
 
-// Category
+// Forms
 @import './forms.scss';
-// @import './pages/category/categoryDetail.scss';
-// @import './pages/category/categoryDelete.scss';
-
-// // Item
-// @import './pages/item/itemDetail.scss';

@@ -2,9 +2,7 @@
 :root {
   --black: #1e1c1c;
   --white: #ffffff;
-  --brown: #d2c4ae;
   --lightBrown: #ffeccf;
-  --green: #294023;
   --roboto: 'Roboto', sans-serif;
   --playfair: 'Playfair Display', serif; }
 
@@ -35,13 +33,6 @@ main {
   font-family: var(--playfair);
   font-weight: 700; }
 
-.textIntroContainer {
-  display: flex; }
-  .textIntroContainer h1 {
-    margin-right: 50px; }
-  .textIntroContainer a {
-    margin-top: 5px; }
-
 .errorsContainer {
   color: red; }
 
@@ -53,23 +44,8 @@ main {
 
 .buttonContainer {
   margin-top: 20px; }
-
-.appButton {
-  font-family: var(--playfair); }
-
-.greenButton {
-  background-color: var(--green);
-  border-color: var(--green); }
-
-.navigationButton:hover {
-  color: #fff;
-  background-color: var(--orangeHover);
-  border-color: var(--orangeHover); }
-
-.navigationButton:focus {
-  box-shadow: 0 0 0 0.25rem var(--orange);
-  background-color: var(--orangeHover);
-  border-color: var(--orangeHover); }
+  .buttonContainer .appButton {
+    font-family: var(--playfair); }
 
 #headerContainer #logo {
   color: white;
@@ -95,6 +71,7 @@ main {
       font-size: 18px; }
 
 #landingContainer .landingTextContainer {
+  margin-top: 20px;
   text-align: center;
   color: white; }
   #landingContainer .landingTextContainer h1 {
@@ -102,11 +79,23 @@ main {
 
 #landingContainer .messagesContainer {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  align-items: center;
+  margin-top: 55px;
+  margin-bottom: 55px; }
   #landingContainer .messagesContainer .messageCard {
     color: var(--black);
     background-color: var(--lightBrown);
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    width: 43rem; }
+    #landingContainer .messagesContainer .messageCard .messageContent {
+      font-size: 0.8rem; }
+    #landingContainer .messagesContainer .messageCard .messageInfoContainer {
+      display: flex;
+      justify-content: space-between; }
+      #landingContainer .messagesContainer .messageCard .messageInfoContainer p {
+        margin-left: 20px;
+        margin-right: 20px; }
 
 .welcomeContainer {
   margin: 0 auto; }
@@ -116,14 +105,12 @@ main {
   .welcomeContainer .adminPicture {
     width: 100%; }
 
-form {
-  margin-top: 20px; }
-
 .formWrapperContainer {
   display: flex; }
-
-.formContainer {
-  display: inline-block;
-  margin: 0 auto; }
+  .formWrapperContainer .formContainer {
+    display: inline-block;
+    margin: 0 auto; }
+    .formWrapperContainer .formContainer form {
+      margin-top: 20px; }
 
 /*# sourceMappingURL=style.css.map */

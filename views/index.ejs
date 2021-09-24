@@ -13,19 +13,15 @@
 			<%if (messages.length > 0) { %>
 			<div class="messagesContainer">
 				<% messages.forEach(message => {%>
-				<div class="container messageCard">
-					<!-- <div class="card-body"> -->
-					<div class="row">
-						<div class="col">
-							<h5 class="card-title title">
-								<%= message.title %>
-							</h5>
-							<p class="card-text">
-								<%= message.message_content %>
-							</p>
+				<div class="card messageCard">
+					<div class="card-body">
+						<h5 class="card-title title"><%= message.title %></h5>
+						<p class="card-text messageContent">
+							<%= message.message_content %>
+						</p>
 
-							<%if (currentUser && currentUser.membership_status)
-							{ %>
+						<%if (currentUser && currentUser.membership_status) { %>
+						<div class="messageInfoContainer">
 							<p class="card-text">
 								<b class="playfair">Author Name:</b>
 								<%= message.user_id.name %>
@@ -38,29 +34,27 @@
 								<b class="playfair">Date Posted:</b> <%=
 								cardUtils.formatDate(message.timestamp)%>
 							</p>
-							<%} else {%>
-							<p class="card-text playfair">
-								Become a member to see full post
-							</p>
-							<%}%> <%if (currentUser && currentUser.admin_status)
-							{%>
-							<div class="buttonContainer">
-								<a
-									class="btn btn-danger appButton"
-									href="<%= `/delete-message/${message._id}` %>"
-									role="button"
-									>Delete Message</a
-								>
-							</div>
-							<%}%>
 						</div>
+						<%} else {%>
+						<p class="card-text playfair">
+							Become a member to see full post
+						</p>
+						<%}%> <%if (currentUser && currentUser.admin_status) {%>
+						<div class="buttonContainer">
+							<a
+								class="btn btn-danger appButton"
+								href="<%= `/delete-message/${message._id}` %>"
+								role="button"
+								>Delete Message</a
+							>
+						</div>
+						<%}%>
 					</div>
 				</div>
-				<% }) %>
+				<% }) %> <% }%>
 			</div>
-			<% }%>
+
+			<%- include('./layout/footer') -%>
 		</div>
 	</div>
 </div>
-
-<%- include('./layout/footer') -%>
