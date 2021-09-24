@@ -2,14 +2,8 @@ const Message = require('../models/message');
 const { body, validationResult } = require('express-validator');
 
 exports.messages_get = async function (req, res, next) {
-	console.log('INside messages_get');
 	try {
 		let messages = await Message.find().populate('user_id');
-		console.log('what are messages');
-		console.log(messages);
-		// console.log(messages[0].user_id);
-		// console.log(messages[0].user_id.first_name);
-		// res.render('home', { messages: messages });
 		return messages;
 	} catch (err) {
 		console.log('MESSAGES GET: Error retrieving messages');
@@ -20,7 +14,6 @@ exports.messages_get = async function (req, res, next) {
 };
 
 exports.message_delete = async function (req, res, next) {
-	console.log('INside message_delete');
 	try {
 		const { id } = req.params;
 		await Message.findByIdAndRemove(id);
@@ -68,9 +61,7 @@ exports.create_message_post = [
 				user_id: currentUser._id
 			});
 
-			let result = await newMessage.save();
-			console.log('What is save message');
-			console.log(result);
+			await newMessage.save();
 			res.redirect('/');
 		} catch (err) {
 			console.log('CREATE MESSAGE: Error while trying to save in db');

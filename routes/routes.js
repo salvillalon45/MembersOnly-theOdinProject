@@ -8,7 +8,6 @@ const message_controller = require('../controllers/messageController');
 // HOMEPAGE
 // ------------------------------------------------------------
 router.get('/', index_controller.index);
-// router.get('/home', index_controller.home);
 
 // SIGNUP
 // ------------------------------------------------------------
@@ -30,7 +29,6 @@ router.post('/admin-sign-in', user_controller.admin_sign_in_post);
 
 // MESSAGE
 // ------------------------------------------------------------
-// router.get('/home', message_controller.messages_get);
 router.get('/create-message', message_controller.create_message_get);
 router.post('/create-message', message_controller.create_message_post);
 router.get('/delete-message/:id', message_controller.message_delete);

@@ -35,11 +35,6 @@ main {
   font-family: var(--playfair);
   font-weight: 700; }
 
-.gridDisplay {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px; }
-
 .textIntroContainer {
   display: flex; }
   .textIntroContainer h1 {
@@ -47,21 +42,8 @@ main {
   .textIntroContainer a {
     margin-top: 5px; }
 
-.cardItem {
-  color: black; }
-
 .errorsContainer {
   color: red; }
-
-form {
-  margin-top: 20px; }
-
-.formWrapperContainer {
-  display: flex; }
-
-.formContainer {
-  display: inline-block;
-  margin: 0 auto; }
 
 .extraRow {
   margin-top: 20px; }
@@ -125,5 +107,23 @@ form {
     color: var(--black);
     background-color: var(--lightBrown);
     margin-bottom: 20px; }
+
+.welcomeContainer {
+  margin: 0 auto; }
+  .welcomeContainer .banner {
+    transition: 250ms;
+    border-radius: 1em; }
+  .welcomeContainer .adminPicture {
+    width: 100%; }
+
+form {
+  margin-top: 20px; }
+
+.formWrapperContainer {
+  display: flex; }
+
+.formContainer {
+  display: inline-block;
+  margin: 0 auto; }
 
 /*# sourceMappingURL=style.css.map */

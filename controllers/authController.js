@@ -3,12 +3,10 @@ const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const { body, validationResult } = require('express-validator');
 
-// GET Sign UP
 exports.sign_up_get = function (req, res, next) {
-	res.render('sign_up_form', { errors: null });
+	res.render('forms/sign_up_form', { errors: null });
 };
 
-// POST Sign Up
 exports.sign_up_post = [
 	body('username')
 		.trim()
@@ -50,13 +48,13 @@ exports.sign_up_post = [
 		if (!errors.isEmpty()) {
 			console.log('SIGN UP: Error with fields');
 			console.log(errors);
-			return res.render('sign_up_form', { errors: errors.array() });
+			return res.render('forms/sign_up_form', { errors: errors.array() });
 		}
 
 		try {
 			const isUserInDB = await User.find({ username: req.body.username });
 			if (isUserInDB.length > 0) {
-				return res.render('sign_up_form', {
+				return res.render('forms/sign_up_form', {
 					errors: [{ msg: 'User already exists' }]
 				});
 			}
@@ -75,9 +73,8 @@ exports.sign_up_post = [
 							first_name: req.body.first_name,
 							admin_status: false
 						});
-						let result = await user.save();
-						console.log('What is save user');
-						console.log(result);
+
+						await user.save();
 						res.redirect('/log-in');
 					} catch (err) {
 						console.log(
@@ -94,38 +91,23 @@ exports.sign_up_post = [
 	}
 ];
 
-// GET Log In
 exports.log_in_get = function (req, res, next) {
-	console.log('INside logINGEt');
 	let message = null;
 	const flashResult = req.flash();
-	console.log('what is flashresukt');
-	console.log(Object.keys(flashResult));
 
 	if (Object.keys(flashResult).length !== 0) {
-		console.log('There is content');
-		console.log(flashResult.error[0]);
 		message = flashResult.error[0];
 	}
 
-	res.render('log_in_form', { message: message });
+	res.render('forms/log_in_form', { message: message });
 };
 
-// POST Log In
-exports.log_in_post = passport.authenticate(
-	'local',
-	{
-		successRedirect: '/',
-		failureRedirect: '/log-in',
-		failureFlash: true
-	}
-	// (err, user, options) => {
-	// 	console.log('What are option');
-	// 	console.log(options); // options will be the complete object you pass in done()
-	// }
-);
+exports.log_in_post = passport.authenticate('local', {
+	successRedirect: '/',
+	failureRedirect: '/log-in',
+	failureFlash: true
+});
 
-// GET Log Out
 exports.log_out_get = function (req, res, next) {
 	req.logout();
 	res.redirect('/');

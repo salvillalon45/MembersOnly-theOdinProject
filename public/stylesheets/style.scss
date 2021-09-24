@@ -57,14 +57,6 @@ main {
 	font-weight: 700;
 }
 
-// Layout for cards
-// -----------------------------------------------
-.gridDisplay {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-gap: 16px;
-}
-
 .textIntroContainer {
 	display: flex;
 
@@ -77,26 +69,8 @@ main {
 	}
 }
 
-.cardItem {
-	color: black;
-}
-
 .errorsContainer {
 	color: red;
-}
-
-// Forms
-form {
-	margin-top: 20px;
-}
-
-.formWrapperContainer {
-	display: flex;
-}
-
-.formContainer {
-	display: inline-block;
-	margin: 0 auto;
 }
 
 .extraRow {
@@ -139,8 +113,8 @@ form {
 @import './layout/footer.scss';
 @import './index.scss';
 
-// // Category
-// @import './pages/category/categoryList.scss';
+// Category
+@import './forms.scss';
 // @import './pages/category/categoryDetail.scss';
 // @import './pages/category/categoryDelete.scss';
 

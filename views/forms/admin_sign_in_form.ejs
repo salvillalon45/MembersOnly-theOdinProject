@@ -1,8 +1,9 @@
-<%- include('./layout/header') -%>
+<%- include('../layout/header') -%>
 
-<div class="container" id="landingContainer">
+<div class="container" id="adminSignInFormContainer">
 	<div class="row">
 		<div class="col formWrapperContainer">
+			<%if (!currentUser.admin_status) { %>
 			<div class="formContainer">
 				<h1 class="playfair">Become an Admin</h1>
 				<p class="text-center">Passcode is: kenny</p>
@@ -41,10 +42,20 @@
 						<% }) %>
 					</ul>
 				</div>
-				<% }%>
+				<% }%> <% } else {%>
+				<div class="welcomeContainer">
+					<h1 class="playfair text-center extraRow marginBottom">
+						Congrats. You Are An Admin
+					</h1>
+					<img
+						class="img-fluid marginBottom adminPicture banner"
+						src="/images/admin.gif"
+					/>
+				</div>
+				<%}%>
 			</div>
 		</div>
 	</div>
 
-	<%- include('./layout/footer') -%>
+	<%- include('../layout/footer') -%>
 </div>

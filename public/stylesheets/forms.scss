@@ -1,0 +1,33 @@
+// -----------------------------------------------
+//
+// Styling for the forms
+//
+// -----------------------------------------------
+
+// Welcome container used in Member Sign In Form and Admin Sign In Form
+.welcomeContainer {
+	margin: 0 auto;
+
+	.banner {
+		transition: 250ms;
+		border-radius: 1em;
+	}
+
+	.adminPicture {
+		width: 100%;
+	}
+}
+
+// Styling for the forms used
+form {
+	margin-top: 20px;
+}
+
+.formWrapperContainer {
+	display: flex;
+}
+
+.formContainer {
+	display: inline-block;
+	margin: 0 auto;
+}

@@ -1,6 +1,6 @@
-<%- include('./layout/header') -%>
+<%- include('../layout/header') -%>
 
-<div class="container" id="landingContainer">
+<div class="container" id="memberSignInFormContainer">
 	<div class="row">
 		<div class="col formWrapperContainer">
 			<%if (!currentUser.membership_status) { %>
@@ -46,7 +46,7 @@
 						Congrats. You are a member
 					</h1>
 					<img
-						class="img-fluid marginBottom"
+						class="img-fluid marginBottom banner"
 						src="/images/welcome.jpg"
 					/>
 				</div>
@@ -56,4 +56,4 @@
 	</div>
 </div>
 
-<%- include('./layout/footer') -%>
+<%- include('../layout/footer') -%>
