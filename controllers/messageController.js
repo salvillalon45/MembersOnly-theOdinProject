@@ -26,7 +26,7 @@ exports.message_delete = async function (req, res, next) {
 };
 
 exports.create_message_get = function (req, res, next) {
-	res.render('create_message_form', { errors: null });
+	res.render('forms/create_message_form', { errors: null });
 };
 
 exports.create_message_post = [
@@ -47,7 +47,7 @@ exports.create_message_post = [
 		if (!errors.isEmpty()) {
 			console.log('CREATE MESSAGE: Error with fields');
 			console.log(errors);
-			return res.render('create_message_form', {
+			return res.render('forms/create_message_form', {
 				errors: errors.array(),
 				user: res.locals.currentUser
 			});
