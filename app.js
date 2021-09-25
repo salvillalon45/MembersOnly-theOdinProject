@@ -11,11 +11,20 @@ const LocalStrategy = require('passport-local').Strategy;
 const flash = require('connect-flash');
 require('dotenv').config();
 const favicon = require('serve-favicon');
+const compression = require('compression');
+const helmet = require('helmet');
 const User = require('./models/user');
 
 const indexRouter = require('./routes/routes');
 
 const app = express();
+
+// Compress all routes. Do this before any routes you want compressed
+// Decrease the size of the response body and hence increase the speed of a web app
+app.use(compression());
+
+// Protects app from web vulnerabilities by setting HTTP headers appropriately
+app.use(helmet());
 
 // Favicon
 app.use(favicon(path.join(__dirname, 'public', 'images', 'eren.jpg')));
