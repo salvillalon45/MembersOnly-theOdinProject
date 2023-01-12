@@ -1,6 +1,5 @@
-<h1 align="center">
+# Members Only
 [The Odin Project: Node] - Project: Members Only
-</h1>
 
 ## Intro
 
@@ -18,9 +17,9 @@
 
 |  Color            |  Hex                                                                 |
 | ----------------- | -------------------------------------------------------------------- |
-|  Light Brown      |  ![#ffeccf](https://via.placeholder.com/10/ffeccf?text=+) `#ffeccf`  |
-|  White            |  ![#fff](https://via.placeholder.com/10/fff?text=+) `#fff`           |
-| Black             |  ![#1e1c1c](https://via.placeholder.com/10/1e1c1c?text=+) `#1e1c1c`  |
+|  Light Brown      |  ![#ffeccf](https://placehold.co/15x15/ffeccf/ffeccf.png) `#ffeccf`  |
+|  White            |  ![#fff](https://placehold.co/15x15/fff/fff.png) `#fff`              |
+|  Black            |  ![#1e1c1c](https://placehold.co/15x15/1e1c1c/1e1c1c.png) `#1e1c1c`  |
 
 -   Saw online for [Attack on Titan Color Scheme and found this](https://www.color-hex.com/color-palette/29356). I got inspiration from it.
 
